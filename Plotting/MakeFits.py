@@ -36,7 +36,7 @@ parser.add_argument( '--condor',        action='store_true', help='run condor jo
 options = parser.parse_args()
 
 _WLEPBR = (1.-0.6741)
-_XSFILE   = 'cross_sections/photon16.py' # TODO: use file with signal xs = 1 pb or 1 fb
+_XSFILE   = 'cross_sections/photon16_sig1fb.py'
 _LUMI16   = 36000
 _LUMI17   = 41000
 _LUMI18   = 59740
