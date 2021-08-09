@@ -50,7 +50,7 @@ matrix:
 
 fit:
 
-	python MakeFits.py --doVarOpt 
+	python MakeFits.py --condor
 	make limit
 
 limit:
@@ -131,9 +131,12 @@ workspaces :
 	#python MakeWorkspaces.py --baseDirMuG ${DIR_MUG} --baseDirElG ${DIR_ELG} --baseDirMuGNoId ${DIR_MUGNoId} --baseDirElGNoId ${DIR_ELGNoId} --doWGamma --outputDir ${OUTPUTMAIN}/Workspaces
 	python MakeSignalWS.py --baseDirMuG ${DIR_MUG} --baseDirElG ${DIR_ELG} --baseDirMuGNoId ${DIR_MUGNoId} --baseDirElGNoId ${DIR_ELGNoId} --doSignal --outputDir ${OUTPUTMAIN}/Workspaces
 
+<<<<<<< HEAD
 fits :
 #	##python MakeFits.py --baseDir ${OUTPUTMAIN}/Workspaces/ --combineDir /home/friccita/WGamma/WG_Analysis/CMSSW_8_1_0 --outputDir ${OUTPUTMAIN} --doVarOptimization   --useHistTemplate  --noRunCombine
 	python MakeFits.py --baseDir ${OUTPUTMAIN}/ --combineDir /data/users/yihuilai/combine/CMSSW_11_0_0/src/HiggsAnalysis/CombinedLimit --doVarOpt --outputDir ${OUTPUTMAIN}/data/higgs 
 
+=======
+>>>>>>> 71d6cd9cc881388ac1a7b747b0c9a0c20a4d23d9
 signalfits : 
 	python MakeResSignalFits.py --baseDirMu  ${DIR_MUG} --baseDirEl ${DIR_ELG} --outputDir ${OUTPUTMAIN}/SignalFits
