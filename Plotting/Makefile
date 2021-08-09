@@ -71,8 +71,8 @@ limit:
 	./limitplot.py data/higgs/Results/result_5_mu2016.json
 	./limitplot.py data/higgs/Results/result_5_mu2017.json
 	./limitplot.py data/higgs/Results/result_5_mu2018.json
-	mv result_*.pdf ~/public_html/
-	mv result_*.png ~/public_html/
+	mv result_*.pdf plots/
+	mv result_*.png plots/
 
 sys:
 

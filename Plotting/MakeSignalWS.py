@@ -194,7 +194,7 @@ def make_signal_fits( sampMan, suffix="", workspaces_to_save=None, var="mt_res",
         ### exclude certain samples
         if samp.name.count( 'MadGraph' ) == 0:
            continue
-        if mass > 2000 or mass < 300:
+        if mass < 300:
            continue
         if iwidth >=len(signal_binning):
            print "exclude", iwidth,signal_binning
