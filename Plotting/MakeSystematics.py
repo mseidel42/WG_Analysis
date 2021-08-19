@@ -383,7 +383,7 @@ for cutsetkey, sellist in selection_list.iteritems():
         #save_as = ("%s_%sg%i.pdf" %(sysname,ch,year), options.outputDir, "base")
         save_as = None
         hconf = { "xlabel": "Reco Mass","xunit": "GeV" ,"drawsignal":True, "logy":True}
-        hf = sf.SetHisto1DFast(var, sel, (90,200,2000), weight, hconf, lgconf , lconf, save_as, data_exp = True)
+        hf = sf.SetHisto1DFast(var, sel, (250,0,5000), weight, hconf, lgconf , lconf, save_as, data_exp = True)
         selection_list[cutsetkey][sysname]["hist"] = hf
 
 #########  draw histograms  #########

@@ -12,7 +12,7 @@ ROOT.PyConfig.IgnoreCommandLineOptions = True
 ROOT.Math.MinimizerOptions.SetDefaultMaxFunctionCalls( 100000)
 
 _XMIN_M = 60
-_XMAX_M = 4000
+_XMAX_M = 5000
 _DEFAULTDATADIR = 'data/sigfit/'
 
 if options.dataDir is None :
