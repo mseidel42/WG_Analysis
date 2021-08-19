@@ -308,6 +308,15 @@ def import_workspace( ws , objects):
 
 # ---------------------------------------------------
 
+def do_work(c):
+    p = subprocess.Popen(c, shell=True)
+    status = p.wait()
+    if status != 0:
+        print("ERROR %i: %s" % (status, c))
+
+def log_result(retval):
+    pool_results.append(retval)
+    print('%i/%i done' % (len(pool_results), pool_total))
 
 class MakeLimits( ) :
 
@@ -1613,37 +1622,28 @@ class MakeLimits( ) :
 
 # ---------------------------------------------------
 
-
     def run_commands(self):
         processes = []
         doneset = set()
 
         ## get list of commands
         commands = self.get_commands()
+        global pool_total
+        pool_total = len(commands)
+        global pool_results
+        pool_results = []
         ## FIXME for testing
         #commands = [ ['sleep','%i'%i] for i in range(0,30,5)]
 
-        ## run command
-        for i,c in enumerate(commands):
-            print "command #",i, c
-            processes.append(subprocess.Popen(c, shell=True))
+        from multiprocessing import Pool
+        num_threads = 8
+        pool = Pool(processes=num_threads)
+        print('Starting multiprocessing pool with %i threads' % num_threads)
 
-        ## check command state
-        while any([p.poll() == None for p in processes]):
-            time.sleep(10)
-            for i, p in enumerate(processes):
-                status = p.poll()
-                if status == None:
-                    continue
-                elif status == 0:
-                    if i not in doneset:
-                        doneset.add(i)
-                        print "FINISHED", i
-                else:
-                    if i not in doneset:
-                        doneset.add(i)
-                    print "ERROR", i
-        return
+        for item in commands:
+            pool.apply_async(do_work, args=[item], callback=log_result)
+        pool.close()
+        pool.join()
 
 
 # ---------------------------------------------------
